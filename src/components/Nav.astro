@@ -1,0 +1,51 @@
+---
+const { pathname } = Astro.url;
+
+const navLinks = [
+  { title: "Home", path: "/" },
+  { title: "People", path: "/people" },
+  //   { title: "Example", path: "/example" },
+];
+---
+
+<header>
+  <nav>
+    <ul>
+      {
+        navLinks.map((link) => {
+          return (
+            <li>
+              <a href={link.path} class={pathname === link.path && "active"}>
+                {link.title}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>
+
+<!-- <style>
+  ul {
+    display: flex;
+  }
+
+  .active {
+    color: hotpink;
+  }
+</style> -->
+<style>
+  ul {
+    display: flex;
+  }
+  a {
+    font-size: 5rem;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: purple;
+    color: white;
+  }
+  .active {
+    color: purple;
+  }
+</style>

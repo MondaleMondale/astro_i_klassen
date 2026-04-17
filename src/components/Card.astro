@@ -1,0 +1,10 @@
+---
+const { personData } = Astro.props;
+---
+
+<article>
+  <h2>{personData.name}</h2>
+  <img src={personData.photo} alt="" />
+  <p>Stilling: {personData.occupation}</p>
+  <p>Alder: {personData.age}</p>
+</article>

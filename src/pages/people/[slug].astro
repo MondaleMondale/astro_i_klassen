@@ -1,0 +1,26 @@
+---
+export async function getStaticPaths() {
+  const options = {
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsb2ttaXFldGJrYWhna2ZzZWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMzM3ODIsImV4cCI6MjA5MTgwOTc4Mn0.RziRk5k7RkZDN2bYK-vDfN2ZwMplH_77Kf7cSvFhvhQ",
+    },
+  };
+  const url = "https://tlokmiqetbkahgkfsecg.supabase.co/rest/v1/traene_supa";
+
+  const response = await fetch(url, options);
+  const data = await response.json();
+
+  return data.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+}
+
+// const { slug } = Astro.params;
+const { post } = Astro.props;
+---
+
+<h1>{post.name}</h1>

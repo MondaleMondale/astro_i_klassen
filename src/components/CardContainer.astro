@@ -1,0 +1,24 @@
+---
+import Card from "./Card.astro";
+const options = {
+  headers: {
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsb2ttaXFldGJrYWhna2ZzZWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMzM3ODIsImV4cCI6MjA5MTgwOTc4Mn0.RziRk5k7RkZDN2bYK-vDfN2ZwMplH_77Kf7cSvFhvhQ",
+  },
+};
+const url = "https://tlokmiqetbkahgkfsecg.supabase.co/rest/v1/traene_supa";
+
+const response = await fetch(url, options);
+const data = await response.json();
+---
+
+<div class="the_container">
+  {data.map((person) => <Card personData={person} />)}
+</div>
+<style>
+  .the_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1rem;
+  }
+</style>
