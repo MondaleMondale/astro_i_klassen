@@ -1,0 +1,22 @@
+---
+//@ts-nocheck
+import EventCalendarCard from "./EventCalendarCard.astro";
+const options = {
+  headers: {
+    apikey: "sb_publishable_tPEG8EM4OzwDGoC0ouaSOQ_iU-oafjN",
+  },
+};
+const url = "https://tlokmiqetbkahgkfsecg.supabase.co/rest/v1/events";
+
+const response = await fetch(url, options);
+const data = await response.json();
+// console.log(data);
+---
+
+<h1>Event</h1>
+<!-- {data[0].photo} -->
+<section class="card_container">
+  {data.map((event) => <EventCalendarCard eventData={event} />)}
+</section>
+
+<style></style>

@@ -1,0 +1,41 @@
+---
+const { eventData } = Astro.props;
+---
+
+<article
+  class={"event_card" + (new Date() > new Date(eventData.date) ? " dim" : "") + (new Date().toDateString() === new Date(eventData.date).toDateString() ? " highlight" : "")}
+  data-title={eventData.title}
+  data-date={eventData.date}
+  data-type={eventData.type}
+>
+  <div>
+    <h2>{eventData.title}</h2>
+    <h3>{new Date(eventData.date).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" })}</h3>
+    <h3>datefis {new Date().toDateString() === new Date(eventData.date).toDateString()}</h3>
+    <h4>{eventData.type}</h4>
+  </div>
+  <img src={"/event_pics/" + eventData.photo} />
+</article>
+<style>
+  img {
+    width: 20vw;
+    align-self: flex-start;
+  }
+  .event_card {
+    border: 1px solid black;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    /* margin: 1rem; */
+  }
+  .hide {
+    display: none;
+    /* background-color: red; */
+  }
+  .dim {
+    opacity: 0.5;
+  }
+  .highlight {
+    background-color: yellow;
+  }
+</style>

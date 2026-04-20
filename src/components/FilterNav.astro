@@ -1,0 +1,76 @@
+---
+
+---
+
+<div>
+  <button class="filter_btn active_btn" data-filter="all">All</button>
+  <button class="filter_btn" data-filter="forår">Forår</button>
+  <button class="filter_btn" data-filter="mode">Mode</button>
+  <button class="filter_btn" data-filter="hygge">Hygge</button>
+  <button class="sort_btn">Toggle Sort</button>
+</div>
+<script>
+  //@ts-nocheck
+  document.querySelectorAll(".filter_btn").forEach((each) => {
+    each.addEventListener("click", (evt) => {
+      document.querySelectorAll(".filter_btn").forEach((btn) => {
+        btn.classList.remove("active_btn");
+      });
+      evt.target.classList.add("active_btn");
+      console.log("FILTER", evt.target.dataset.filter);
+
+      document.querySelectorAll(".event_card").forEach((each) => {
+        if (evt.target.dataset.filter === each.dataset.type || evt.target.dataset.filter === "all") {
+          each.classList.remove("hide");
+        } else {
+          each.classList.add("hide");
+        }
+      });
+    });
+  });
+
+  let toggle = 1;
+  theSort();
+  document.querySelector(".sort_btn").addEventListener("click", theSort);
+  function theSort() {
+    // document.querySelector(".sort_btn").classList.toggle("active_btn");
+    document.querySelector(".sort_btn").textContent = toggle === 1 ? "Sort Newest" : "Sort Oldest";
+    toggle *= -1;
+    // const whatToSortOn = "date";
+    const pedal_cards = [...document.querySelectorAll(".event_card")];
+    // console.log("pedal_cards", pedal_cards, typeof pedal_cards);
+    // console.log(pedal_cards[0]);
+    // console.log("SORT", pedal_cards[0].dataset.date);
+
+    pedal_cards.sort((a, b) => {
+      if (a.dataset.date < b.dataset.date) {
+        return 1 * toggle;
+      }
+      if (a.dataset.date > b.dataset.date) {
+        return -1 * toggle;
+      }
+    });
+
+    pedal_cards.forEach((element) => document.querySelector(".card_container").appendChild(element));
+  }
+</script>
+
+<style>
+  h3 {
+    color: wheat;
+  }
+  .active_btn {
+    background-color: darkgray;
+  }
+  button {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 10px;
+  }
+  .filter_btn {
+    border: none;
+  }
+</style>
