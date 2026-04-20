@@ -11,7 +11,7 @@ const { eventData } = Astro.props;
   <div>
     <h2>{eventData.title}</h2>
     <h3>{new Date(eventData.date).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" })}</h3>
-    <h3>datefis {new Date().toDateString() === new Date(eventData.date).toDateString()}</h3>
+    <!-- <h3>datefis {new Date().toDateString() === new Date(eventData.date).toDateString()}</h3> -->
     <h4>{eventData.type}</h4>
   </div>
   <img src={"/event_pics/" + eventData.photo} />
