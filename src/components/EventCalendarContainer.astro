@@ -6,7 +6,7 @@ const options = {
     apikey: "sb_publishable_tPEG8EM4OzwDGoC0ouaSOQ_iU-oafjN",
   },
 };
-const url = "https://tlokmiqetbkahgkfsecg.supabase.co/rest/v1/events";
+const url = "https://tlokmiqetbkahgkfsecg.supabase.co/rest/v1/events?select=*&order=date.asc";
 
 const response = await fetch(url, options);
 const data = await response.json();
