@@ -3,11 +3,16 @@ const { personData } = Astro.props;
 ---
 
 <a href={"/people/" + personData.slug}>
+
   <article class={personData.is_active ? "" : "inactive"}>
+
+
+
     <h2>{personData.name}</h2>
     <img src={personData.photo} alt="" />
     <p>Stilling: {personData.occupation}</p>
     <p>Alder: {personData.age}</p>
+
     {personData.is_active ? <p>Individet er aktivt</p> : <p>Individet er IKKE aktivt</p>}
   </article>
 </a>
@@ -17,3 +22,6 @@ const { personData } = Astro.props;
     background-color: bisque;
   }
 </style>
+
+
+
