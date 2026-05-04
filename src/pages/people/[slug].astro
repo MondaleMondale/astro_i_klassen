@@ -1,10 +1,10 @@
 ---
 //@ts-nocheck
+import PageLayoutWithoutNav from "../../layouts/PageLayoutWithoutNav.astro";
 export async function getStaticPaths() {
   const options = {
     headers: {
-      apikey:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsb2ttaXFldGJrYWhna2ZzZWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMzM3ODIsImV4cCI6MjA5MTgwOTc4Mn0.RziRk5k7RkZDN2bYK-vDfN2ZwMplH_77Kf7cSvFhvhQ",
+      apikey: "sb_publishable_tPEG8EM4OzwDGoC0ouaSOQ_iU-oafjN",
     },
   };
   const url = "https://tlokmiqetbkahgkfsecg.supabase.co/rest/v1/traene_supa";
@@ -24,5 +24,7 @@ export async function getStaticPaths() {
 const { personData } = Astro.props;
 ---
 
-<h1>{personData.name}</h1>
-<img src={personData.photo} alt="" />
+<PageLayoutWithoutNav>
+  <h1>{personData.name}</h1>
+  <img src={personData.photo} alt="" />
+</PageLayoutWithoutNav>
